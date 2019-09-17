@@ -1,0 +1,28 @@
+{
+  "name": "boilerplate-webdev-project",
+  "version": "1.0.0",
+  "description": "Start code for web dev projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Linnéa Hådén",
+  "repository": {
+  "type" : "git",
+  "url" : "https://github.com/linneahaden/boilerplate-webdev-project.git"
+},
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-imagemin": "^6.1.0",
+    "gulp-uglify-es": "^1.0.4"
+  },
+  "dependencies": {
+    "del": "^5.1.0"
+  }
+}

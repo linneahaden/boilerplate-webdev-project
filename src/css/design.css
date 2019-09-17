@@ -1,0 +1,49 @@
+body {
+  /* Sätter bakgrunden i helskärm: */
+  background: url("../images/bg.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.main_content {
+  width: 50%;
+  margin: auto;
+  margin-top: 3em;
+  padding: 3em;
+  background-color: rgba(234, 228, 246, 0.7);
+}
+
+/* Hamburgermenu */
+.hamburgerWrapper {
+  width: 35px;
+  margin: auto;
+  padding-top: 0.5em;
+}
+
+.hamburger {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 5px 0;
+}
+
+nav li {
+  display: none;
+  padding: 10px 1em 0 1em;
+  margin-left: -35px;
+}
+
+/* Tar fram menyn vid hover. */
+nav:hover ul li {
+  display: block;
+}
+
+.js_example {
+  width: 10em;
+  height: 10em;
+  margin: auto;
+  background-color: #A67B9A;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
