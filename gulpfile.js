@@ -4,6 +4,7 @@ const concatJs = require('gulp-concat');
 const uglify = require('gulp-uglify-es').default;
 const cleanCss = require('gulp-clean-css');
 const concatCss = require('gulp-concat-css');
+const sass = require('gulp-sass');
 const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
@@ -12,12 +13,8 @@ const imagemin = require('gulp-imagemin');
 const files = {
   htmlPath: "src/**/*.html",
   jsPath: "src/**/*.js",
-  cssPath: "src/**/*.css",
-  //Här har jag inte hittat något bra sätt att komma åt bildfiler generellt
-  jpgPath: "src/**/*.jpg",
-  pngPath: "src/**/*.png",
-  gifPath: "src/**/*.gif",
-  svgPath: "src/**/*.svg"
+  sassPath: "src/**/*.scss",
+  imgPath: "src/images/**/*"
 }
 
 //Task - Clear the pub folder
@@ -36,16 +33,18 @@ function htmlTask(){
 );
 }
 
-//Task - CSS: Minify, concat and copy css files
-function cssTask(){
-  return src(files.cssPath)
-  //Autoprefixer
+//Task - SASS: Compile scss to css, minify, concat and copy
+//Obs funktionaliteten för css från moment 2 är flyttad till denna funktion.
+function sassTask() {
+  return src(files.sassPath)
+  //Compiles sass to css
+  .pipe(sass().on('error', sass.logError))
+  // //Autoprefixer
   .pipe(autoprefixer({cascade: false}))
-  //Cancatenation
+  // //Concatenation
   .pipe(concatCss('main.css', {rebaseUrls: false}))
-  //Minifies
+  // //Minifies
   .pipe(cleanCss({compatibility: 'ie8'}))
-  //Destination
   .pipe(dest('pub/css'))
   .pipe(browserSync.stream()
   );
@@ -66,11 +65,11 @@ function jsTask(){
 
 //Task - IMAGES: Minify and copy image files
 function imageTask(){
-  return src([files.jpgPath, files.pngPath, files.gifPath, files.pngPath])
+  return src(files.imgPath)
   //Minify image
   .pipe(imagemin())
   //Destination
-  .pipe(dest('pub'))
+  .pipe(dest('pub/images'))
   .pipe(browserSync.stream()
 );
 }
@@ -84,13 +83,13 @@ function watchTask(){
         }
     });
   //Watches the following file paths and triggers the related functions
-  watch([files.htmlPath, files.jsPath, files.cssPath, files.jpgPath, files.pngPath, files.gifPath, files.pngPath],
-    parallel(htmlTask, jsTask, cssTask, imageTask)
+  watch([files.htmlPath, files.jsPath, files.sassPath, files.imgPath],
+    parallel(htmlTask, jsTask, sassTask, imageTask)
   );
 }
 
 //Exports (All tasks in default triggers with gulp commando.)
 exports.default = series(
-  parallel(pubCleanup, htmlTask, jsTask, cssTask, imageTask),
+  parallel(pubCleanup, htmlTask, jsTask, sassTask, imageTask),
   watchTask
 );
