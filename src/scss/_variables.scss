@@ -1,0 +1,17 @@
+// Obs font-variabler i _typography.scss
+
+// Color variables
+$primary-color: #3C7373;
+$darkest-color: #3D3640;
+$lightest-color: #FFFFF9;
+$accent-color1: #9BBFAB;
+$accent-color2: #D9A296;
+
+//Media query variables
+$break-phone: all and (max-width: 640px);
+$break-tablet: all and (min-width: 641px) and (max-width: 768px);
+$break-laptop: all and (max-width: 769px) and (max-width: 1200px);
+$break-desktop: all and (min-width: 1201px);
+
+//Background url:s
+$background-main: url("../images/bg.jpg")

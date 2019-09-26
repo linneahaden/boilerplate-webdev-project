@@ -1,0 +1,98 @@
+//Imports
+@import '_variables';
+@import '_typography';
+@import '_placeholders';
+
+//All screen sizes
+body {
+  background: $background-main;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.main_content {
+  width: 500px;
+  margin: auto;
+  margin-top: 3em;
+  padding: 3em;
+  background-color: rgba( $lightest-color, .7 );
+  //Nesting-exempel
+  img {
+    width: 100%;
+  }
+}
+
+//Hover effects
+.pageid:hover {
+  @include scale-effect(45); //Mixin include
+}
+img:hover {
+  @include scale-effect(1.05); //Mixin include
+}
+
+//Navigation big screens
+@media #{$break-laptop}, #{$break-desktop} {
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  nav ul li {
+    list-style-type: none;
+    padding: 1em 2em 0.5em 0;
+  }
+
+}
+
+//Navigation small screens
+@media #{$break-phone}, #{$break-tablet} {
+  /* Hamburgermenu */
+  .hamburgerWrapper {
+    width: 35px;
+    margin: auto;
+    padding-top: 0.5em;
+  }
+
+  .hamburger {
+    width: 35px;
+    height: 5px;
+    background-color: $accent-color2;
+    margin: 5px 0;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: row;
+  }
+
+  nav ul li {
+    width: 50%;
+    padding: 8px 0 0 0;
+    margin-left: -20px;
+  }
+
+  /* Tar fram menyn vid hover. */
+  nav:hover ul {
+    display: flex;
+  }
+
+}
+
+//Layout laptop
+@media #{$break-tablet} {
+  .main_content {
+    width: 450px
+  }
+}
+
+//Layout phone
+@media #{$break-phone} {
+  .main_content {
+    width: 80%;
+    padding: 5%;
+  }
+}

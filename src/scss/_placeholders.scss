@@ -1,0 +1,18 @@
+%h {
+  font-family: $heading;
+  line-height: 1.2em;
+}
+
+//Scale effect
+@mixin scale-effect($scale) {
+  position: relative;
+  z-index: 100;
+  transition: all .2s ease-in-out;
+  
+  @if $scale < 2 {
+    transform: scale($scale);
+  }
+  @else {
+    transform: scale(2);
+    }
+  }
