@@ -8,6 +8,8 @@ const sass = require('gulp-sass');
 const del = require('del');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
 
 //File paths
 const files = {
@@ -50,13 +52,19 @@ function sassTask() {
   );
 }
 
-//Task - JAVASCRIPT: Minify, concat and copy js files
+//Task - JAVASCRIPT: Transpile, minify, concat and copy js files
 function jsTask(){
   return src(files.jsPath)
+  //Sourcemaps init
+  .pipe(sourcemaps.init())
+  //Transpile ecmascript
+  .pipe(babel())
   //Cancatenation
   .pipe(concatJs('main.js'))
   //Uglify js-files
   .pipe(uglify())
+  //Sourcemaps write
+  .pipe(sourcemaps.write("."))
   //Destination
   .pipe(dest('pub/js'))
   .pipe(browserSync.stream()

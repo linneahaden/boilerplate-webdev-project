@@ -24,7 +24,6 @@ Detta projekt har följande grundstruktur
   * /images
   * /js
     * js1.js
-    * js2.js
   * index.html
 * readme.md
 
@@ -52,13 +51,15 @@ I detta projekt är följande tillägg installerade:
 * **gulp-clean-css** ([x](https://www.npmjs.com/package/gulp-clean-css)) Minimerar css-filer för att minska filstorlek.
 * **gulp-concat-css** ([x](https://www.npmjs.com/package/gulp-concat-css)) Konkatinerar css-filer för att minska antalet filer som måste anropas.
 * **gulp-imagemin** ([x](https://www.npmjs.com/package/gulp-imagemin)) Minimerar bildfiler för att minska filstorlek. (Upplever dock att minskningen i filstolek är i underkant.)
+* **gulp-babel** ([x](https://www.npmjs.com/package/gulp-babel)) Transpilerar nyare ecmascript till kod kompatibel med ES2015 (med hjälp av ett preset).
+* **gulp-souremaps** ([x](https://www.npmjs.com/package/gulp-sourcemaps)) Skriver sourcemaps för att lttare hitta i kllkodshnvisningar.
 
 ## Skapa automatisering i gulpfile.js
 I detta projekt är gulpfile.js först uppbyggd med requires för samtliga tillägg samt nödvändiga sökvägar. Därefter alla tasks och exports. Projektet har 6 tasks:
 * **pubCleanup** Rensar pub-katalogen
 * **htmlTask** Kopierar html-filer till pub-katalogen.
 * **scssTask** Kompilerar scss till css, minifierar och konkatenerar css-filer. Skriver den resulterande filen till pub-katalogen.
-* **jsTask** Samma som ovan för js-filer.
+* **jsTask** Samma som ovan för js-filer, plus sourcemaps och transpilering till ES2015.
 * **imageTask** Minifierar och kopierar jpg-, png-, gif- och svg-filer till pub-katalogen.
 * **watchTask** Initierar browsersync samt bevakar ändringar för samtliga angivna sökvägar. När någon fil i dessa sökvägar ändras körs samtliga ovanstående tasks förutom pubCleanup.
 
