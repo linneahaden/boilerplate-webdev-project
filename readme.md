@@ -22,6 +22,10 @@ Detta projekt har följande grundstruktur
     * design.scss
     * typography.scss
   * /images
+  * /includes
+    * /classes
+      *placeholder.php
+    * placeholder.php
   * /js
     * js1.js
   * index.html
@@ -58,6 +62,7 @@ I detta projekt är följande tillägg installerade:
 I detta projekt är gulpfile.js först uppbyggd med requires för samtliga tillägg samt nödvändiga sökvägar. Därefter alla tasks och exports. Projektet har 6 tasks:
 * **pubCleanup** Rensar pub-katalogen
 * **htmlTask** Kopierar html-filer till pub-katalogen.
+* **phpTask** Kopierar php-filer till pub-katalogen.
 * **scssTask** Kompilerar scss till css, minifierar och konkatenerar css-filer. Skriver den resulterande filen till pub-katalogen.
 * **jsTask** Samma som ovan för js-filer, plus sourcemaps och transpilering till ES2015.
 * **imageTask** Minifierar och kopierar jpg-, png-, gif- och svg-filer till pub-katalogen.
