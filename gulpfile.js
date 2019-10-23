@@ -14,9 +14,11 @@ const sourcemaps = require('gulp-sourcemaps');
 //File paths
 const files = {
   htmlPath: "src/**/*.html",
+  phpPath: "src/**/*.php",
+  cssPath: "src/**/*.css",
   jsPath: "src/**/*.js",
   sassPath: "src/**/*.scss",
-  imgPath: "src/images/**/*"
+  imgPath: "src/images/**/*.+(png|jpg|jpeg|gif|svg)"
 }
 
 //Task - Clear the pub folder
@@ -29,6 +31,15 @@ async function pubCleanup(cb){
 //Task - HTML: Copy html files
 function htmlTask(){
   return src(files.htmlPath)
+  //Destination
+  .pipe(dest('pub'))
+  .pipe(browserSync.stream()
+);
+}
+
+//Task - PHP: Copy php files
+function phpTask(){
+  return src(files.phpPath)
   //Destination
   .pipe(dest('pub'))
   .pipe(browserSync.stream()
@@ -91,13 +102,13 @@ function watchTask(){
         }
     });
   //Watches the following file paths and triggers the related functions
-  watch([files.htmlPath, files.jsPath, files.sassPath, files.imgPath],
-    parallel(htmlTask, jsTask, sassTask, imageTask)
+  watch([files.htmlPath, files.jsPath, files.sassPath, files.imgPath, files.phpPath],
+    parallel(htmlTask, phpTask, jsTask, sassTask, imageTask)
   );
 }
 
 //Exports (All tasks in default triggers with gulp commando.)
 exports.default = series(
-  parallel(pubCleanup, htmlTask, jsTask, sassTask, imageTask),
+  parallel(pubCleanup, htmlTask, phpTask, jsTask, sassTask, imageTask),
   watchTask
 );

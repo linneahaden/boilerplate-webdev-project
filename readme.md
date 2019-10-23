@@ -40,7 +40,7 @@ Skapade filen gulpfile.js och lade in `const { src, dest, watch, series, paralle
 `git init` (i rotkatalogen) initierade ett repository. _OBS att Git inte indexerar tomma mappar._  
 Skapade filen .gitignore och lade där till /node_modules som inte ska versionshanteras.  
 
-## #Installera nödvändiga paket/tillägg
+## Installera nödvändiga paket/tillägg
 I detta projekt är följande tillägg installerade:
 * **browser-sync** ([x](https://www.npmjs.com/package/browser-sync)) Uppdaterar webbläsaren i realtid vilket sparar tid.
 * **del** ([x](https://www.npmjs.com/package/del)) Raderar filer och mappar. Bra för att rensa pub-katalogen när man sätter igång för dagen.
@@ -51,7 +51,7 @@ I detta projekt är följande tillägg installerade:
 * **gulp-clean-css** ([x](https://www.npmjs.com/package/gulp-clean-css)) Minimerar css-filer för att minska filstorlek.
 * **gulp-concat-css** ([x](https://www.npmjs.com/package/gulp-concat-css)) Konkatinerar css-filer för att minska antalet filer som måste anropas.
 * **gulp-imagemin** ([x](https://www.npmjs.com/package/gulp-imagemin)) Minimerar bildfiler för att minska filstorlek. (Upplever dock att minskningen i filstolek är i underkant.)
-* **gulp-babel** ([x](https://www.npmjs.com/package/gulp-babel)) Transpilerar nyare ecmascript till kod kompatibel med ES2015 (med hjälp av ett preset).
+* **gulp-babel** ([x](https://www.npmjs.com/package/gulp-babel)) Transpilerar nyare ecmascript till kod kompatibel med ES2015 (med hjälp av ett preset). **OBS** Till Babel är env preset ([x](https://www.npmjs.com/package/@babel/preset-env)) installerat och filen .babelrc finns i rootkatalogen med följande kod: `{"presets": ["@babel/preset-env"]}` Instruktioner på [babeljs.io](https://babeljs.io/setup).
 * **gulp-souremaps** ([x](https://www.npmjs.com/package/gulp-sourcemaps)) Skriver sourcemaps för att lttare hitta i kllkodshnvisningar.
 
 ## Skapa automatisering i gulpfile.js
